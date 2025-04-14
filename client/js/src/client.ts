@@ -130,8 +130,11 @@ export class Client {
 				headers.append(name, this.options.headers[name]);
 			}
 		}
-		if (this && this.options.hf_token) {
-			headers.append("Authorization", `Bearer ${this.options.hf_token}`);
+
+		const { hf_token } = this.options;
+
+		if (hf_token) {
+			headers.append("Authorization", `Bearer ${hf_token}`);
 		}
 
 		this.abort_controller = new AbortController();
